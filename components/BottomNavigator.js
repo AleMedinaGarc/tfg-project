@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 
-const ScannerRoute = () => <Text>Escaner</Text>;
-const HomeRoute = () => <Text>Menú</Text>;
-const HistoryRoute = () => <Text>Historial</Text>;
+
+const ScannerRoute = () => <Text>Escaner</Text>; //<ScannerPage/>
+const HomeRoute = () => <Text>Menú</Text>; //<MainPage/>
+const HistoryRoute = () => <Text>Historial</Text>; //History
 
 export default function BottomNavigator () {
   const [index, setIndex] = React.useState(1);
