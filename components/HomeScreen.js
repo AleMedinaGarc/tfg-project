@@ -1,21 +1,100 @@
-import * as React from 'react';
-import { Provider as Text, Button } from 'react-native-paper';
-import { View } from 'react-native';
+import React from 'react';
+import { View, Image, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Ayuda"
-        onPress={() => navigation.navigate('Ayuda')}
-      />
-      <Button
-        title="Configuración"
-        onPress={() => navigation.navigate('Configuración')}
-      />
-    </View>
-  );
+import { HelpScreen } from "./HelpScreen"
+
+const Stack = createStackNavigator();
+
+function Menu({ navigation }) {
+    return (
+        <View style={{ ...styles, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Image
+                style={styles.logo}
+                source={require('../assets/icon.png')}
+            />
+            <View style={{ height: 100}}/>
+            <Button
+                mode="contained" color="#eda5a5"
+                onPress={() => navigation.navigate(Config)}
+                style={styles.buttonCustom}
+            >
+                <Ionicons name="settings-outline" size={20}> </Ionicons>
+                <Text>Configuración</Text>
+            </Button>
+            <Button
+                mode="contained" color="#eda5a5"
+                onPress={() => navigation.navigate(HelpScreen)}
+                style={styles.buttonCustom}
+            >
+                <Ionicons name="help-circle" size={20}></Ionicons>
+                <Text>Ayuda</Text>
+            </Button>
+        </View>
+    );
 }
 
-  
+function Config({ navigation }) {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Esto es config</Text>
+        </View>
+    );
+}
+
+export function HomeScreen() {
+    return (
+        <Stack.Navigator
+            initialRouteName="Menu"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: '#eda5a5',
+                },
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                },
+                headerTitleAlign: 'center',
+            }}
+        >
+            <Stack.Screen
+                name="Menu"
+                component={Menu}
+                options={{
+                    title: 'Inicio',
+                }}
+            />
+            <Stack.Screen
+                name="Config"
+                component={Config}
+                options={{
+                    title: 'Configuración'
+                }}
+            />
+            <Stack.Screen
+                name="HelpScreen"
+                component={HelpScreen}
+                options={{
+                    title: 'Ayuda'
+                }}
+            />
+        </Stack.Navigator>
+    )
+}
+
+const styles = StyleSheet.create({
+    buttonCustom: {
+        marginTop: 20,
+        height: 50,
+        width: 200,
+        marginLeft: 0,
+        marginRight: 0,
+        justifyContent: 'center',
+
+    },
+    logo: {
+        width: 150,
+        height: 150,
+    }
+});

@@ -4,40 +4,19 @@ import { StyleSheet, Button, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-// import HomeScreen from "./components/HomeScreen"
+import { Ionicons } from '@expo/vector-icons';
 
+import { HomeScreen } from "./components/HomeScreen"
+// import { ConfigScreen } from "./components/ConfigScreen"
+// import { ScanScreen } from "./components/ScanScreen"
+// import { HistoryScreen } from "./components/HistoryScreen"
+
+// https://www.passbolt.com/
 // https://betterprogramming.pub/react-navigation-5-stack-tab-drawer-all-in-one-ead723188056
 
 const Tab = createMaterialBottomTabNavigator();
-const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
 
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Ayuda"
-        onPress={() => navigation.navigate('Ayuda')}
-      />
-      <Button
-        title="Configuración"
-        onPress={() => navigation.navigate('Configuración')}
-      />
-    </View>
-  );
-}
-
-function HelpScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Esto es una ayuda</Text>
-      <Button
-        title="Inicio"
-        onPress={() => navigation.navigate('Inicio')}
-      />
-    </View>
-  );
-}
 
 function HistoryScreen({ navigation }) {
   return (
@@ -57,43 +36,25 @@ function ScannerScreen({ navigation }) {
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator
-    //     initialRouteName="Inicio"
-    //     screenOptions={{
-    //       headerStyle: {
-    //         backgroundColor: '#eda5a5',
-    //       },
-    //       headerTitleStyle: {
-    //         fontWeight: 'bold',
-    //       },
-    //       headerTitleAlign: 'center',
-    //     }}
-    //   >
-    //     <Stack.Screen
-    //       name="Inicio"
-    //       component={HomeScreen}
-    //       options={{
-    //         title: 'Inicio',
-    //       }}
-    //     />
-    //     <Stack.Screen
-    //       name="Ayuda"
-    //       component={HelpScreen}
-    //       options={{
-    //         title: 'Ayuda'
-    //       }}
-    //     />
-    //     <Stack.Screen name="Configuracion" component={HelpScreen} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
-        activeColor="#f0edf6"
-        inactiveColor="#3e2465"
         barStyle={{ backgroundColor: '#eda5a5' }}
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color }) => {
+            let iconName = "home";
+
+            if (route.name === 'Home') {
+            }
+            else if (route.name === 'Scanner') {
+              iconName = 'barcode-outline';   
+            } else if (route.name === 'History') {
+              iconName = 'list';
+            }
+
+            return <Ionicons name={iconName} size={20} color={color}/>;
+          },
+        })}
       >
         <Tab.Screen
           name="Scanner"
@@ -117,23 +78,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// export default function App() {
-//   return (
-//     <PaperProvider theme={theme}>
-//         {/* <Scanner/>
-//         <Main/>
-//         <History/> */}
-//       <BottomNavigator/>
-//     </PaperProvider>
-//   );
-// }
-
-// const theme = {
-//   ...DefaultTheme,
-//   colors: {
-//     ...DefaultTheme.colors,
-//     primary: '#eda5a5',
-//     accent: 'yellow',
-//   },
-// };
