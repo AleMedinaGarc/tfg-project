@@ -16,7 +16,7 @@ export function ScanScreen() {
                 Configuración
             </Button>
             <Button 
-                icon="help_outline" mode="contained" color="#eda5a5" 
+                icon="help_outline" mode="contained" color="#99d98c" 
                 onPress={() => navigation.navigate('Inicio')}
             >
                 Ayuda
