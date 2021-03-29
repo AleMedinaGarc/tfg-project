@@ -17,9 +17,9 @@ function Menu({ navigation }) {
             />
             <View style={{ height: 100}}/>
             <Button
-                mode="contained" color="#eda5a5"
-                onPress={() => navigation.navigate(Config)}
-                style={styles.buttonCustom}
+                mode = "contained" color="#eda5a5"
+                onPress = {() => navigation.navigate(Config)}
+                style = {styles.buttonCustom}
             >
                 <Ionicons name="settings-outline" size={20}> </Ionicons>
                 <Text>Configuración</Text>
