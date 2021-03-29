@@ -13,19 +13,19 @@ function Menu({ navigation }) {
         <View style={{ ...styles, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Image
                 style={styles.logo}
-                source={require('../assets/icon.png')}
+                source={require('../assets/allerga.png')}
             />
-            <View style={{ height: 100}}/>
+            <View style={{ height: 50}}/>
             <Button
-                mode = "contained" color="#eda5a5"
-                onPress = {() => navigation.navigate(Config)}
-                style = {styles.buttonCustom}
+                mode="contained" color="#80ced7"
+                onPress={() => navigation.navigate(Config)}
+                style={styles.buttonCustom}
             >
                 <Ionicons name="settings-outline" size={20}> </Ionicons>
                 <Text>Configuración</Text>
             </Button>
             <Button
-                mode="contained" color="#eda5a5"
+                mode="contained" color="#80ced7"
                 onPress={() => navigation.navigate(HelpScreen)}
                 style={styles.buttonCustom}
             >
@@ -36,7 +36,7 @@ function Menu({ navigation }) {
     );
 }
 
-function Config({ navigation }) {
+function Config() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Esto es config</Text>
@@ -50,7 +50,7 @@ export function HomeScreen() {
             initialRouteName="Menu"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: '#eda5a5',
+                    backgroundColor: '#9ad1d4',
                 },
                 headerTitleStyle: {
                     fontWeight: 'bold',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
     },
     logo: {
-        width: 150,
-        height: 150,
+        width: 200,
+        height: 200,
     }
 });
