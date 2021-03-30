@@ -1,15 +1,16 @@
-// import * as React from 'react';
-// import { Checkbox } from 'react-native-paper';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-// export default CheckBoxAl = () => {
-//     const [checked, setChecked] = React.useState(false);
-  
-//     return (
-//       <Checkbox
-//         status={checked ? 'checked' : 'unchecked'}
-//         onPress={() => {
-//           setChecked(!checked);
-//         }}
-//       />
-//     );
-//   };
+
+const Checkbox = ({ type = 'checkbox', name, checked = false, onChange }) => (
+  <input type={type} name={name} checked={checked} onChange={onChange} />
+);
+
+Checkbox.propTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+}
+
+export default Checkbox;
