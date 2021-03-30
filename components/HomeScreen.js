@@ -40,14 +40,6 @@ function Menu({ navigation }) {
     );
 }
 
-function Config() {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Esto es config</Text>
-        </View>
-    );
-}
-
 export function HomeScreen() {
     return (
         <Stack.Navigator

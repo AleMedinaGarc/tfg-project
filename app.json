@@ -4,32 +4,29 @@
     "slug": "Allerga",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon":{
-      "image": "./assets/icon.png",
+    "icon": "./assets/icon.png"
+  },
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#ffffff"
+  },
+  "updates": {
+    "fallbackToCacheTimeout": 0
+  },
+  "assetBundlePatterns": [
+    "**/*"
+  ],
+  "ios": {
+    "supportsTablet": true
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/icon.png",
       "backgroundColor": "white"
-    },
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "white"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
   }
 }
