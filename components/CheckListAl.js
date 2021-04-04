@@ -1,18 +1,21 @@
-import * as React from 'react';
+import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
 import { fonts } from "../styles/fonts"
-
 import CheckBoxAl from "./CheckBoxAl"
-var data = require('../config.json');
 
-export default function CheckListAl() {
+
+// hacer un elemento nuevo de guardado
+// segun los que tengan 
+
+export default function CheckListAl(props) {
+
   return (
     <ScrollView style={{ flex: 1, flexDirection: 'column', marginTop: 30 }}>
       {
-        data.map((item) =>
+        props.data.map((item) =>
           <View key={item.id} style={{ flexDirection: 'row', paddingTop: 10 }}>
-            <CheckBoxAl item={item} />
+            <CheckBoxAl item={item} navigation={props.navigation}/>
             <View style={{ justifyContent: 'center', textAlign: 'center' }}>
               <Text style={fonts.blackFont}> {item.name}</Text>
             </View>
