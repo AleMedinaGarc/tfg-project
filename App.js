@@ -4,9 +4,9 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-import { HomeScreen } from "./components/HomeScreen"
-import { ScanScreen } from "./components/ScanScreen"
-import { HistoryScreen } from "./components/HistoryScreen"
+import { HomeScreen } from "./screens/HomeScreen"
+import { ScanScreen } from "./screens/ScanScreen"
+import { HistoryScreen } from "./screens/HistoryScreen"
 
 // https://betterprogramming.pub/react-navigation-5-stack-tab-drawer-all-in-one-ead723188056
 

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { fonts } from "../styles/fonts"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import CheckboxContainer from './CheckListAl';
+import CheckboxContainer from '../components/CheckListAl';
 
 
 export function ConfigScreen({ navigation }) {
