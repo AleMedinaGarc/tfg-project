@@ -2,34 +2,32 @@
   "expo": {
     "name": "Allerga",
     "slug": "Allerga",
-    "version": "1.0.0",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
     "android": {
-      "package": "com.faztweb.allerga"
+      "package": "com.faztweb.allerga",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
     }
-  },
-  "splash": {
-    "image": "./assets/splash.png",
-    "resizeMode": "contain",
-    "backgroundColor": "#ffffff"
-  },
-  "updates": {
-    "fallbackToCacheTimeout": 0
-  },
-  "assetBundlePatterns": [
-    "**/*"
-  ],
-  "ios": {
-    "supportsTablet": true
-  },
-  "android": {
-    "adaptiveIcon": {
-      "foregroundImage": "./assets/icon.png",
-      "backgroundColor": "white"
-    }
-  },
-  "web": {
-    "favicon": "./assets/favicon.png"
   }
 }
