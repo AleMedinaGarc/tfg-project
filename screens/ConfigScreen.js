@@ -1,34 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View, Text } from "react-native";
 import { fonts } from "../styles/fonts"
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import CheckboxContainer from '../components/CheckListAl';
+import { getJsonConfigConst } from "../components/DataStream"
+import CheckboxContainer from "../components/CheckListAl";
 
 
 export function ConfigScreen({ navigation }) {
-    const dataFile = [
-        { "name": "Gluten",               "id": "0",  "check":false },
-    ]
       
-    const [data, setData] = useState(dataFile);
-
-    const getMyStringValue = async () => {
-        try {
-            const jsonValue = await AsyncStorage.getItem("myData")
-            return jsonValue != null ? JSON.parse(jsonValue) : null
-        } catch (e) {
-            alert(e)
-        }
-    }
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        getMyStringValue().then((value) => 
+        getJsonConfigConst().then((value) => 
         setData(value))
     }, [])
         
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", paddingBottom:"3%" }}>
             <Text style={fonts.blackFont}>
                 Selecciona el alérgeno que quieres evitar:</Text>
             <CheckboxContainer data={data} navigation={navigation}></CheckboxContainer>

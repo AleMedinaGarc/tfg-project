@@ -2,7 +2,7 @@
   "expo": {
     "name": "Allerga",
     "slug": "Allerga",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,11 +20,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.faztweb.allerga",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#ffffff"
-      }
+      "package": "com.faztweb.allerga"
     },
     "web": {
       "favicon": "./assets/favicon.png"
