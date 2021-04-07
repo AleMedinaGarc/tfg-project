@@ -3,10 +3,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
-import { HelpScreen } from "../screens/HelpScreen"
-import { ConfigScreen } from "../screens/ConfigScreen"
-
-
 export function HomeContent({ navigation }) {
     return (
         <View style={{ ...styles, flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -17,7 +13,7 @@ export function HomeContent({ navigation }) {
             <View style={{ height: 50 }} />
             <Button
                 mode="contained" color="#80ced7"
-                onPress={() => navigation.navigate(ConfigScreen)}
+                onPress={() => navigation.navigate("ConfigScreen")}
                 style={styles.buttonCustom}
             >
                 <Ionicons name="settings-outline" size={20} />
@@ -26,7 +22,7 @@ export function HomeContent({ navigation }) {
             </Button>
             <Button
                 mode="contained" color="#80ced7"
-                onPress={() => navigation.navigate(HelpScreen)}
+                onPress={() => navigation.navigate("HelpScreen")}
                 style={styles.buttonCustom}
             >
                 <Ionicons name="help-circle" size={20} />
