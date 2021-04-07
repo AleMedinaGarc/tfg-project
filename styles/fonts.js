@@ -1,5 +1,5 @@
-import { StyleSheet, Text } from 'react-native'
-import React from 'react';
+import { StyleSheet, Text } from "react-native"
+import React from "react";
 
 const MainFont = {
 
@@ -18,7 +18,7 @@ export const fonts = StyleSheet.create({
         },
 })
 
-export const B = (props) => <Text style={{ fontWeight: 'bold' }}>{props.children}</Text>
-export const Y = (props) => <Text style={{ color: "#ff6700", fontWeight: 'bold' }}>{props.children}</Text>
-export const G = (props) => <Text style={{ color: "#00693e", fontWeight: 'bold' }}>{props.children}</Text>
-export const R = (props) => <Text style={{ color: "#ac0d0d", fontWeight: 'bold' }}>{props.children}</Text>
+export const B = (props) => <Text style={{ fontWeight: "bold" }}>{props.children}</Text>
+export const Y = (props) => <Text style={{ color: "#ff6700", fontWeight: "bold" }}>{props.children}</Text>
+export const G = (props) => <Text style={{ color: "#00693e", fontWeight: "bold" }}>{props.children}</Text>
+export const R = (props) => <Text style={{ color: "#ac0d0d", fontWeight: "bold" }}>{props.children}</Text>
