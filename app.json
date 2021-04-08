@@ -20,7 +20,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.faztweb.allerga"
+      "package": "com.alemedinagarc.Allerga"
     },
     "web": {
       "favicon": "./assets/favicon.png"

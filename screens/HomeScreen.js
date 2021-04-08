@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -32,7 +31,7 @@ export default function HomeScreen() {
     }, []);
 
     return (
-        <NavigationContainer>
+
             <Stack.Navigator
                 initialRouteName="Menu"
                 screenOptions={{
@@ -67,6 +66,6 @@ export default function HomeScreen() {
                     }}
                 />
             </Stack.Navigator>
-        </NavigationContainer>
+  
     );
 }

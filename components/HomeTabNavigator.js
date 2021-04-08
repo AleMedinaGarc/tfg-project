@@ -1,10 +1,12 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { Platform } from 'react-native'
 
 import HomeContent from "./HomeContent"
 import { HistoryScreen } from "../screens/HistoryScreen"
-import { ScanScreen } from "../screens/ScanScreen"
+import ScanScreenWeb from "../screens/ScanScreenWeb"
+import ScanScreenAndroid from "../screens/ScanScreenAndroid"
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -31,7 +33,7 @@ export function TabNavigator() {
         >
             <Tab.Screen
                 name="Scanner"
-                component={ScanScreen}
+                component={(Platform.OS == "android") ? ScanScreenAndroid : ScanScreenWeb}
                 options={{
                     title: "Escaner"
                 }} />
