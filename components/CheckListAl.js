@@ -2,6 +2,7 @@ import React from "react";
 import { View, ScrollView } from "react-native";
 import { Text } from "react-native-paper";
 import { fonts } from "../styles/fonts"
+
 import CheckBoxAl from "./CheckBoxAl"
 
 

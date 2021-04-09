@@ -6,8 +6,7 @@ import { getJsonConfigConst } from "../components/DataStream"
 import CheckboxContainer from "../components/CheckListAl";
 
 
-export function ConfigScreen({ navigation }) {
-      
+export default function ConfigScreen({ navigation }) {    
     const [data, setData] = useState([]);
 
     useEffect(() => {

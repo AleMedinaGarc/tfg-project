@@ -3,8 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { fonts, R, Y, B, G } from "../styles/fonts"
 
 
-
-export function HelpScreen() {
+export default function HelpScreen() {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={fonts.blackFont}>

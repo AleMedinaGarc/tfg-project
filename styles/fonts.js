@@ -2,7 +2,6 @@ import { StyleSheet, Text } from "react-native"
 import React from "react";
 
 const MainFont = {
-
         // fontFamily: "OpenSans",
         fontSize: 16,
         fontWeight: "300",

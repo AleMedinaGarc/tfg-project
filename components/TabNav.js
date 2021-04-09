@@ -1,17 +1,15 @@
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { Platform } from 'react-native'
 
-import HomeContent from "./HomeContent"
-import { HistoryScreen } from "../screens/HistoryScreen"
-import ScanScreenWeb from "./ScanContentWeb"
-import ScanScreenAndroid from "./ScanContent"
+import HomeStack from "./stack/HomeStack";
+import HistoryScreen from "../screens/HistoryScreen";
+import ScanStack from "./stack/ScanStack";
 
 
 const Tab = createMaterialBottomTabNavigator();
 
-export function HomeTabNav() {
+export default function TabNav() {
     return (
         <Tab.Navigator
             initialRouteName="Home"
@@ -33,13 +31,13 @@ export function HomeTabNav() {
         >
             <Tab.Screen
                 name="Scanner"
-                component={(Platform.OS == "android") ? ScanScreenAndroid : ScanScreenWeb}
+                component={ScanStack}
                 options={{
                     title: "Escaner"
                 }} />
             <Tab.Screen
                 name="Home"
-                component={HomeContent}
+                component={HomeStack}
                 options={{
                     title: "Inicio"
                 }} />
