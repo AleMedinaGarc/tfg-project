@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { TabNavigator } from "../components/HomeTabNavigator";
+import { HomeTabNav } from "../components/HomeTabNav";
 import { HelpScreen } from "./HelpScreen"
 import { ConfigScreen } from "./ConfigScreen"
 
@@ -31,7 +31,6 @@ export default function HomeScreen() {
     }, []);
 
     return (
-
             <Stack.Navigator
                 initialRouteName="Menu"
                 screenOptions={{
@@ -46,7 +45,7 @@ export default function HomeScreen() {
             >
                 <Stack.Screen
                     name="Menu"
-                    component={TabNavigator}
+                    component={HomeTabNav}
                     options={{
                         title: "Inicio",
                     }}

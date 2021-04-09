@@ -5,13 +5,13 @@ import { Platform } from 'react-native'
 
 import HomeContent from "./HomeContent"
 import { HistoryScreen } from "../screens/HistoryScreen"
-import ScanScreenWeb from "../screens/ScanScreenWeb"
-import ScanScreenAndroid from "../screens/ScanScreenAndroid"
+import ScanScreenWeb from "./ScanContentWeb"
+import ScanScreenAndroid from "./ScanContent"
 
 
 const Tab = createMaterialBottomTabNavigator();
 
-export function TabNavigator() {
+export function HomeTabNav() {
     return (
         <Tab.Navigator
             initialRouteName="Home"

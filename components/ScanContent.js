@@ -3,10 +3,7 @@ import { Text, View, StyleSheet, Button, ActivityIndicator, Dimensions } from 'r
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 
-const { width } = Dimensions.get('window');
-const opacity = 'rgba(0, 0, 0, .8)';
-
-export default function ScanScreenAndroid() {
+export default function ScanContent() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -49,6 +46,8 @@ export default function ScanScreenAndroid() {
   );
   // Cambiar el boton de la derecha de && por un componente info
 }
+
+const opacity = 'rgba(0, 0, 0, .8)';
 
 const styles = StyleSheet.create({
   container: {
