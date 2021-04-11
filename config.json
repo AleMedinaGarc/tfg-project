@@ -1,17 +1,17 @@
 [
-    { "name": "Gluten",               "id": "0",  "check":false },
-    { "name": "Frutos con cáscara",   "id": "1",  "check":false },
-    { "name": "Soja",                 "id": "2",  "check":false },
-    { "name": "Apio",                 "id": "3",  "check":false },
-    { "name": "Huevos",               "id": "4",  "check":false },
-    { "name": "Mostaza",              "id": "5",  "check":false },
-    { "name": "Leche",                "id": "6",  "check":false },
-    { "name": "Sésamo",               "id": "7",  "check":false },
-    { "name": "Cacahuetes",           "id": "8",  "check":false },
-    { "name": "Sulfitos",             "id": "9",  "check":false },
-    { "name": "Crustáceos",           "id": "10", "check":false },
-    { "name": "Pescado",              "id": "11", "check":false },
-    { "name": "Altramuces",           "id": "12", "check":false },
-    { "name": "Moluscos",             "id": "13", "check":false }
+    { "name": "Gluten",               "id": "0",  "encoded": "en:gluten",      "check":false },
+    { "name": "Frutos con cáscara",   "id": "1",  "encoded": "en:nuts",        "check":false },
+    { "name": "Soja",                 "id": "2",  "encoded": "en:soybeans",    "check":false },
+    { "name": "Apio",                 "id": "3",  "encoded": "en:celery",      "check":false },
+    { "name": "Huevos",               "id": "4",  "encoded": "en:eggs",        "check":false },
+    { "name": "Mostaza",              "id": "5",  "encoded": "en:mustard",     "check":false },
+    { "name": "Leche",                "id": "6",  "encoded": "en:milk",        "check":false },
+    { "name": "Sésamo",               "id": "7",  "encoded": "en:sesame",      "check":false },
+    { "name": "Cacahuetes",           "id": "8",  "encoded": "en:peanuts",     "check":false },
+    { "name": "Sulfitos",             "id": "9",  "encoded": "en:sulphites",   "check":false },
+    { "name": "Crustáceos",           "id": "10", "encoded": "en:crustaceans", "check":false },
+    { "name": "Pescado",              "id": "11", "encoded": "en:fish",        "check":false },
+    { "name": "Altramuces",           "id": "12", "encoded": "en:lupin",       "check":false },
+    { "name": "Moluscos",             "id": "13", "encoded": "en:molluscs",    "check":false }
 ]
   
