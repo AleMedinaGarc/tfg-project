@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
+
 export default function HomeScreen({ navigation }) {
     return (
         <View style={{ ...styles, flex: 1, alignItems: "center", justifyContent: "center" }}>

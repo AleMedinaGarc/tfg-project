@@ -9,7 +9,6 @@ import ConfigScreen from "../../screens/ConfigScreen";
 
 const Stack = createStackNavigator();
 
-
 export default function HomeStack() {
     let dataFile = require("../../config.json");
 

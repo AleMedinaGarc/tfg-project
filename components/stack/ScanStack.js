@@ -26,7 +26,7 @@ export default function ScanStack() {
                     name="Scanner"
                     component={(Platform.OS == "android") ? ScanScreen : ScanScreenWeb}
                     options={{
-                        title: "Escaner",
+                        title: "Escaner"        ,
                     }}
                 />
                 <Stack.Screen

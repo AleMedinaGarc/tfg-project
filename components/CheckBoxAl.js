@@ -10,6 +10,7 @@ export default function CheckBoxAl(props) {
 
   useEffect(() => {
     getJsonConfig().then((value) => setConfig(value));
+    console.log(config)
   }, [])
 
   function actionPress() {
