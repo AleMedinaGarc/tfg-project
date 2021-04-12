@@ -1,31 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { ActivityIndicator, View } from 'react-native';
 
+
 import ProductCard from "../components/ProductCard";
+import { useFetch } from "../components/CustomHooks"
 
 
 export default function ProductScreen({ route, navigation }) {
-    const { barCode } = route.params;
-    const { config } = route.params;
-    const [loading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const { barCode, config } = route.params;
+    //const [loading, setLoading] = useState(true);
+    //const [data, setData] = useState([]);
+    const url = `https://world.openfoodfacts.org/api/v0/product/${barCode}.json`;
+    //const [isError, setIsError] = useState(false);
 
-    useEffect(() => {
+    const [response, loading, hasError] = useFetch(url)
 
-        fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`)
-            .then((response) => response.json())
-            .then((json) => setData(json))
-            .catch((error) => console.error(error))
-            .finally(() => setLoading(false));
-
-    }, [config]);
-
+    console.log(response);
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            {loading ?
+            { loading ?
                 <ActivityIndicator size={70} color="#9ad1d4" /> :
-                <ProductCard data={data} config={config} navigation={navigation}></ProductCard>
-            }
+                (hasError ?
+                    <Text>Error occured.</Text> :
+                    <ProductCard data={response.data} config={config} navigation={navigation}></ProductCard>)}
         </View>
     );
 }

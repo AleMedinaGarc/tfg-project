@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
+import { getJsonConfigConst } from "../components/DataStream"
+
 
 export default function ScanScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+
+  const [config, setConfig] = useState()
 
   useEffect(() => {
     (async () => {
@@ -14,10 +18,15 @@ export default function ScanScreen({ navigation }) {
     })();
   }, []);
 
+  useEffect(() => {
+    getJsonConfigConst()
+      .then((value) => setConfig(value));
+  }, []);
+
   const handleBarCodeScanned = ({ type, data }) => {
     //setScanned(true);
     if (type == "32" || type == "64") 
-      navigation.navigate("ProductScreen", {barCode: data})
+      navigation.navigate("ProductScreen", {barCode: data, config: config})
     //} else {
     //  alert(`Esta aplicación no soporta escaneos de tipo ${type}`)
     //}
@@ -48,7 +57,6 @@ export default function ScanScreen({ navigation }) {
       <View style={styles.layerBottom} />
     </View>
   );
-  // Cambiar el boton de la derecha de && por un componente info
 }
 
 const opacity = 'rgba(0, 0, 0, .4)';
