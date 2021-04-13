@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, Text, View, Image, StyleSheet } from 'react-native';
 import { fonts, R, Y, B, G } from "../styles/fonts"
 
-import { getJsonConfigConst } from "./DataStream"
 
 // vector de alergenos alergen_tags y traces_tags
 // popularidad unique_scans_n
@@ -14,6 +13,8 @@ export default function ProductCard({ data, config, navigation }) {
     let allergensFound = [];
 
     function checkName() {
+        if (data == null)
+            return;
         if (data.status == 0)
             return "No está escaneando un alimento";
         if (data.product.product_name_es != "")
@@ -32,6 +33,8 @@ export default function ProductCard({ data, config, navigation }) {
     }
 
     function checkImage() {
+        if (data == null)
+            return "null";
         if (data.status == 0)
             return "No está escaneando un alimento";
         if (data.product.image_front_url != "")
@@ -40,47 +43,64 @@ export default function ProductCard({ data, config, navigation }) {
             return "noImage";
     }
 
-    function isAccepted() {
-        console.log(config);
+    useEffect(() => {
+        if (data == null)
+            return;
+
         let mergeAllergens = data.product.allergens_tags.concat(data.product.traces_tags)
+
         for (let tag of mergeAllergens) {
-                //  8480000107480
             for (let elemTag of config) {
-                console.log("elemtag: " + elemTag["encoded"])
                 if ((tag == elemTag["encoded"]) && elemTag["check"]) {
                     setEdible(false);
-                    console.log("uwu")
                     allergensFound.push(elemTag["name"])
                 }
             }
         }
 
-        // if (edible == true) {
-        //     if (data.product.unique_scans_n <= 20) {
-        //         //setBackColor("#ff6700");
-        //         return <Text style={fonts.blackFont}><Y>Comestible, pero tiene la cantidad de X escaneos</Y></Text> //en naranja
-        //     } else {
-        //         //setBackColor("#00693e");
-        //         return <Text style={fonts.blackFont}><G>Comestible</G></Text>
-        //     }
-        // } else {
-        //     //setBackColor("#ac0d0d");
-        //     return (
-        //         <View>
-        //             <Text style={fonts.blackFont}><R>No Comestible</R></Text>
-        //             {allergensFound.map((allergen) => <Text>{allergen}</Text>)}
-        //         </View>
-        //     )
+        if (edible == true) {
+            if (data.product.unique_scans_n <= 20) {
+                setBackColor("#ff6700");
+            } else {
+                setBackColor("#00693e");
+            }
+        } else {
+            setBackColor("#ac0d0d");
 
-        // }
+        }
+    });
+
+    function renderEdible() {
+
+        if (data == null)
+            return;
+
+        if (edible == true) {
+            if (data.product.unique_scans_n <= 20) {
+                return <Text style={fonts.blackFont}><Y>Comestible, pero tiene la cantidad de X escaneos</Y></Text> //en naranja
+            } else {
+                return <Text style={fonts.blackFont}><G>Comestible</G></Text>
+            }
+        } else {
+            return (
+                <View>
+                    <Text style={fonts.blackFont}><R>No Comestible</R></Text>
+                    {allergensFound.map((allergen) => <Text>{allergen}</Text>)}
+                </View>
+            )
+
+        }
+
     }
+
+
     return (
         <View style={{ width: 500, height: 1000, backgroundColor: `${backColor}` }}>
             <View style={{ width: 20, height: 30, backgroundColor: "#FFFFFF" }}>
                 {/* <Image source={`${checkImage()}`}
                     style={{ width: 400, height: 400 }} /> */}
                 <Text style={fonts.blackFont}>{checkName()}</Text>
-                {isAccepted()}
+                {renderEdible()}
             </View>
         </View >
     );

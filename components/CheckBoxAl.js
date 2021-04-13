@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Checkbox } from "react-native-paper";
 
 import { getJsonConfig, setJsonConfig, removeJsonConfig } from "./DataStream";
+import { ChangeContext } from "./ChangeProvider";
 
 
 export default function CheckBoxAl(props) {
   const [checked, setChecked] = useState(props.item.check);
   const [config, setConfig] = useState();
 
+  const { setDidChange, didChange } = useContext(ChangeContext);
+
   useEffect(() => {
     getJsonConfig().then((value) => setConfig(value));
-    console.log(config)
   }, [])
 
   function actionPress() {
+    console.log(`tiene que estar false: ${didChange}`);
+    setDidChange(true);
+    console.log(`tiene que estar true: ${didChange}`);
     getJsonConfig().then((value) => {
       setConfig(value);
       setChecked(!checked);

@@ -1,13 +1,16 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
+import { ChangeProvider } from "./components/ChangeProvider"
 import TabNav from "./components/TabNav";
 
 
 export default function App() {
   return (
     <NavigationContainer>
-    <TabNav/>
+      <ChangeProvider>    
+        <TabNav />
+      </ChangeProvider>
     </NavigationContainer>
   );
 }

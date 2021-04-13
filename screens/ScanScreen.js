@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import { getJsonConfigConst } from "../components/DataStream"
+import { ChangeContext } from "../components/ChangeProvider"
 
 
 export default function ScanScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+  const{ didChange, setDidChange }= useContext(ChangeContext)
+
 
   const [config, setConfig] = useState()
 
@@ -20,8 +23,11 @@ export default function ScanScreen({ navigation }) {
 
   useEffect(() => {
     getJsonConfigConst()
-      .then((value) => setConfig(value));
-  }, []);
+      .then((value) =>{
+        setConfig(value);
+        setDidChange(false);
+      })
+  }, [didChange]);
 
   const handleBarCodeScanned = ({ type, data }) => {
     //setScanned(true);

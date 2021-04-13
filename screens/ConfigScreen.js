@@ -5,14 +5,13 @@ import { fonts } from "../styles/fonts"
 import { getJsonConfigConst } from "../components/DataStream"
 import CheckboxContainer from "../components/CheckListAl";
 
-
 export default function ConfigScreen({ navigation }) {    
     const [data, setData] = useState([]);
 
     useEffect(() => {
         getJsonConfigConst().then((value) => 
-        setData(value))
-    }, [])
+        setData(value));
+    }, []);
         
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", paddingBottom:"3%" }}>
