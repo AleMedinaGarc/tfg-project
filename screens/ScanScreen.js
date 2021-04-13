@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import React, { useState, useEffect, useContext } from "react";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
 import { getJsonConfigConst } from "../components/DataStream"
 import { ChangeContext } from "../components/ChangeProvider"
@@ -17,7 +17,7 @@ export default function ScanScreen({ navigation }) {
   useEffect(() => {
     (async () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
+      setHasPermission(status === "granted");
     })();
   }, []);
 
@@ -65,12 +65,12 @@ export default function ScanScreen({ navigation }) {
   );
 }
 
-const opacity = 'rgba(0, 0, 0, .4)';
+const opacity = "rgba(0, 0, 0, .4)";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   buttonCustom: {
     marginTop: 20,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   layerCenter: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   layerLeft: {
     flex: 1,

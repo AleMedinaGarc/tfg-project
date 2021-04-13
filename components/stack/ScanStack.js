@@ -1,6 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Platform } from 'react-native' 
+import { Platform } from "react-native" 
 import ProductScreen from "../../screens/ProductScreen"
 import ScanScreen from "../../screens/ScanScreen"
 import ScanScreenWeb from "../../screens/ScanScreenWeb"

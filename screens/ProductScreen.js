@@ -1,5 +1,5 @@
 import React from "react";
-import { ActivityIndicator, View, Text } from 'react-native';
+import { ActivityIndicator, View, Text } from "react-native";
 
 import ProductCard from "../components/ProductCard";
 import { useFetch } from "../components/CustomHooks"

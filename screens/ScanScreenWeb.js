@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { TextInput, Button } from "react-native-paper";
 
 import { getJsonConfigConst } from "../components/DataStream"
+import { ChangeContext } from "../components/ChangeProvider"
 
 
 export default function ScanScreenWeb({ navigation }) {
   const [barcode, setBarcode] = useState("");
   const [config, setConfig] = useState([])
+  const{ didChange, setDidChange }= useContext(ChangeContext)
 
   useEffect(() => {
     getJsonConfigConst()
-      .then((value) => setConfig(value));
-  }, []);
+      .then((value) =>{
+        setConfig(value);
+        setDidChange(false);
+      })
+  }, [didChange]);
 
   return (
     <View style={{ zIndex: 999, flex: 1, alignItems: "center", justifyContent: "center" }}>
