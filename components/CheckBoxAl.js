@@ -9,16 +9,14 @@ export default function CheckBoxAl(props) {
   const [checked, setChecked] = useState(props.item.check);
   const [config, setConfig] = useState();
 
-  const { setDidChange, didChange } = useContext(ChangeContext);
+  const { setDidChange } = useContext(ChangeContext);
 
   useEffect(() => {
     getJsonConfig().then((value) => setConfig(value));
   }, [])
 
   function actionPress() {
-    console.log(`tiene que estar false: ${didChange}`);
     setDidChange(true);
-    console.log(`tiene que estar true: ${didChange}`);
     getJsonConfig().then((value) => {
       setConfig(value);
       setChecked(!checked);
