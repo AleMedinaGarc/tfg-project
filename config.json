@@ -5,7 +5,7 @@
     { "name": "Apio",                 "id": "3",  "encoded": "en:celery",      "check":false },
     { "name": "Huevos",               "id": "4",  "encoded": "en:eggs",        "check":false },
     { "name": "Mostaza",              "id": "5",  "encoded": "en:mustard",     "check":false },
-    { "name": "Leche",                "id": "6",  "encoded": "en:milk",        "check":false },
+    { "name": "Lácteos",              "id": "6",  "encoded": "en:milk",        "check":false },
     { "name": "Sésamo",               "id": "7",  "encoded": "en:sesame",      "check":false },
     { "name": "Cacahuetes",           "id": "8",  "encoded": "en:peanuts",     "check":false },
     { "name": "Sulfitos",             "id": "9",  "encoded": "en:sulphites",   "check":false },
