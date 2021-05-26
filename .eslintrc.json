@@ -18,6 +18,8 @@
         "prettier"
     ],
     "rules": {
+        "array-callback-return": 0,
+        "react/jsx-no-duplicate-props": 0,
         "no-unused-expressions": 0,
         "no-nested-ternary": 0,
         "linebreak-style": 0,

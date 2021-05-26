@@ -9,9 +9,12 @@ export default function CheckListAl({ data, navigation }) {
   /* --------------------------------- RETURN --------------------------------- */
 
   return (
-    <ScrollView style={{ flex: 1, flexDirection: 'column', marginTop: 30 }}>
+    <ScrollView style={{
+      flex: 1, flexDirection: 'column', marginTop: 30, width: '80%',
+    }}
+    >
       {data.map((item) => (
-        <View key={item.id} style={{ flexDirection: 'row', paddingTop: 10 }}>
+        <View key={item.id} style={{ flexDirection: 'row', marginTop: '3%' }}>
           <CheckBoxAl item={item} navigation={navigation} />
           <View style={{ justifyContent: 'center', textAlign: 'center' }}>
             <Text style={fonts.blackFont}>{item.name}</Text>

@@ -6,6 +6,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import { getJsonConfigConst } from '../components/DataStream';
 import * as ChangeProvider from '../components/context/ChangeProvider';
+import * as NewItemProvider from '../components/context/NewItemProvider';
 
 /* --------------------------------- STYLES --------------------------------- */
 const opacity = 'rgba(0, 0, 0, .4)';
@@ -55,12 +56,12 @@ export default function ScanScreen({ navigation }) {
 /* -------------------------------- CONTEXTS -------------------------------- */
 
   const { didChange, setDidChange } = useContext(ChangeProvider.ChangeContext);
+  const { scanned, setScanned } = useContext(NewItemProvider.NewItemContext);
 
   /* --------------------------------- STATES --------------------------------- */
 
   const [hasPermission, setHasPermission] = useState(null);
   const [config, setConfig] = useState();
-  const [scanned, setScanned] = useState(false);
 
   /* --------------------------------- EFFECTS -------------------------------- */
 
@@ -69,10 +70,10 @@ export default function ScanScreen({ navigation }) {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
-  }, []);
+  }, [hasPermission]);
 
   useEffect(() => {
-    getJsonConfigConst().then((value) => {
+    getJsonConfigConst('myData').then((value) => {
       setConfig(value);
       setDidChange(false);
     });
@@ -83,7 +84,6 @@ export default function ScanScreen({ navigation }) {
   const handleBarCodeScanned = ({ data }) => {
     setScanned(true);
     navigation.navigate('ProductScreen', { barCode: data, config });
-    setScanned(false);
   };
 
   const loadTransition = () => {

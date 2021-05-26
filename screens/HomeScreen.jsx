@@ -10,7 +10,7 @@ import { Button } from 'react-native-paper';
 const styles = StyleSheet.create({
   buttonCustom: {
     marginTop: 20,
-    height: 45,
+    height: 50,
     width: 200,
     marginLeft: 0,
     marginRight: 0,
@@ -48,6 +48,7 @@ export default function HomeScreen({ navigation }) {
         color="#80ced7"
         onPress={() => navigation.navigate('ConfigScreen')}
         style={styles.buttonCustom}
+        contentStyle={{ height: 50 }}
       >
         <Ionicons name="settings-outline" size={20} />
         <View style={{ paddingLeft: 5 }} />
@@ -58,6 +59,7 @@ export default function HomeScreen({ navigation }) {
         color="#80ced7"
         onPress={() => navigation.navigate('HelpScreen')}
         style={styles.buttonCustom}
+        contentStyle={{ height: 50 }}
       >
         <Ionicons name="help-circle" size={20} />
         <View style={{ paddingLeft: 5 }} />

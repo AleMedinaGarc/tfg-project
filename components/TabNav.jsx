@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import HomeStack from './stack/HomeStack';
-import HistoryScreen from '../screens/HistoryScreen';
+import HistoryStack from './stack/HistoryStack';
 import ScanStack from './stack/ScanStack';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -42,7 +42,7 @@ export default function TabNav() {
       />
       <Tab.Screen
         name="History"
-        component={HistoryScreen}
+        component={HistoryStack}
         options={{
           title: 'Historial',
         }}

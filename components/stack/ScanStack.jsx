@@ -1,13 +1,19 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext } from 'react';
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { Platform } from 'react-native';
+
 import ProductScreen from '../../screens/ProductScreen';
 import ScanScreen from '../../screens/ScanScreen';
 import ScanScreenWeb from '../../screens/ScanScreenWeb';
 
+import * as NewItemProvider from '../context/NewItemProvider';
+
 const Stack = createStackNavigator();
 
 export default function ScanStack() {
+  /* -------------------------------- CONTEXTS -------------------------------- */
+  const { setScanned, setNewItem } = useContext(NewItemProvider.NewItemContext);
+  /* --------------------------------- RETURN --------------------------------- */
   return (
     <Stack.Navigator
       initialRouteName="Scanner"
@@ -31,9 +37,17 @@ export default function ScanStack() {
       <Stack.Screen
         name="ProductScreen"
         component={ProductScreen}
-        options={{
+        options={({ navigation }) => ({
           title: 'Producto',
-        }}
+          headerLeft: () => (
+            <HeaderBackButton onPress={() => {
+              navigation.pop();
+              setScanned(false);
+              setNewItem(false);
+            }}
+            />
+          ),
+        })}
       />
     </Stack.Navigator>
   );

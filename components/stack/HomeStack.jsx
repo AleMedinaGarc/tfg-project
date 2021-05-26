@@ -14,11 +14,12 @@ export default function HomeStack() {
   const setInitalData = async () => {
     try {
       const value = await AsyncStorage.getItem('hasLaunched');
-      if (value == null) {
+      if (value === null) {
         await AsyncStorage.setItem('myData', JSON.stringify(dataFile));
+        await AsyncStorage.setItem('history', JSON.stringify([]));
         await AsyncStorage.setItem('hasLaunched', 'yeah');
       }
-      // await AsyncStorage.clear() // No descometar
+      // await AsyncStorage.clear(); // No descometar, solo para tests
     } catch (e) {
       alert(e);
     }

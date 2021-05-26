@@ -13,7 +13,7 @@ export default function ConfigScreen({ navigation }) {
   /* --------------------------------- EFFECTS -------------------------------- */
 
   useEffect(() => {
-    getJsonConfigConst().then((value) => setData(value));
+    getJsonConfigConst('myData').then((value) => setData(value, 'myData'));
   }, []);
 
   /* --------------------------------- RETURN --------------------------------- */
@@ -27,7 +27,7 @@ export default function ConfigScreen({ navigation }) {
         paddingBottom: '3%',
       }}
     >
-      <Text style={fonts.blackFont}>
+      <Text style={fonts.blackFont} style={{ marginTop: '10%', fontSize: 17 }}>
         Selecciona el alérgeno que quieres evitar:
       </Text>
       <CheckboxContainer data={data} navigation={navigation} />

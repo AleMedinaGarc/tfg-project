@@ -18,17 +18,16 @@ export default function CheckBoxAl({ item, navigation }) {
 
   function actionPress() {
     setDidChange(true);
-    getJsonConfig().then((value) => {
-      setConfig(value);
+    getJsonConfig('myData').then((value) => {
+      setConfig(value, 'myData');
       setChecked(!checked);
-      // item.check = !checked; si sigue todo bien borrar
       for (let k = 0; k < config.length; k++) {
         if (config[k].id === item.id) {
           config[k].check = !checked;
         }
       }
-      removeJsonConfig();
-      setJsonConfig(config);
+      removeJsonConfig('myData');
+      setJsonConfig(config, 'myData');
       navigation.pop();
     });
   }
@@ -36,7 +35,7 @@ export default function CheckBoxAl({ item, navigation }) {
   /* --------------------------------- EFFECTS -------------------------------- */
 
   useEffect(() => {
-    getJsonConfig().then((value) => setConfig(value));
+    getJsonConfig('myData').then((value) => setConfig(value));
   }, []);
   /* --------------------------------- RETURN --------------------------------- */
 

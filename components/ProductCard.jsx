@@ -1,11 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
-  Text, View, Image, StyleSheet,
+  Text,
+  View,
+  Image,
+  StyleSheet,
 } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 import {
-  fonts, R, Y, G,
-} from '../styles/fonts';
+  fonts,
+  R,
+  Y,
+  G,
+}
+  from '../styles/fonts';
+import {
+  setJsonConfig,
+  removeJsonConfig,
+  getJsonConfig,
+} from './DataStream';
+import * as NewItemProvider from './context/NewItemProvider';
 
 // vector de alergenos alergen_tags y traces_tags
 // popularidad unique_scans_n
@@ -34,8 +47,8 @@ const styles = StyleSheet.create({
   },
   buttonCustom: {
     marginTop: 20,
-    height: 45,
-    width: 200,
+    height: 50,
+    width: 250,
     marginLeft: 0,
     marginRight: 0,
     justifyContent: 'center',
@@ -68,6 +81,10 @@ const styles = StyleSheet.create({
 });
 
 export default function ProductCard({ data, config, navigation }) {
+  /* -------------------------------- CONTEXTS -------------------------------- */
+
+  const { setScanned, setNewItem } = useContext(NewItemProvider.NewItemContext);
+
   /* --------------------------------- STATES --------------------------------- */
 
   const [backColor, setBackColor] = useState('#FFFFF');
@@ -78,8 +95,8 @@ export default function ProductCard({ data, config, navigation }) {
 
   /* -------------------------------- FUNCTIONS ------------------------------- */
 
-  function checkName() {
-    if (data == null || data.status === 0) return;
+  const checkName = () => {
+    if (data == null || data.status === 0 || data === undefined) return;
 
     if (data.product.product_name_es !== '') {
       return setName(data.product.product_name);
@@ -94,10 +111,10 @@ export default function ProductCard({ data, config, navigation }) {
       return setName(data.product.generic_name);
     }
     return setName('noNamed');
-  }
+  };
 
   function checkImage() {
-    if (data == null || data.status === 0) return;
+    if (data == null || data.status === 0 || data === undefined) return;
 
     if (data.product.image_front_url !== '') {
       return data.product.image_front_url;
@@ -106,7 +123,7 @@ export default function ProductCard({ data, config, navigation }) {
   }
 
   function renderEdible() {
-    if (data == null) return;
+    if (data === null || data === undefined) return;
     if (data.status === 0) {
       return (
         <Text>
@@ -120,7 +137,6 @@ export default function ProductCard({ data, config, navigation }) {
           <View>
             <Text
               style={fonts.blackFont}
-              // eslint-disable-next-line react/jsx-no-duplicate-props
               style={{ fontSize: 17, marginTop: '3%', marginLeft: '4%' }}
             >
               <Y>Apto para consumo. PRECAUCIÓN:</Y>
@@ -144,6 +160,7 @@ export default function ProductCard({ data, config, navigation }) {
         </Text>
         <Text style={fonts.blackFont}>
           Contiene:
+          {' '}
           {allergensFound}
         </Text>
       </View>
@@ -154,7 +171,6 @@ export default function ProductCard({ data, config, navigation }) {
 
   useEffect(() => {
     if (data == null || data === undefined) return;
-    checkName();
     if (data.status === 0) {
       setIsValid(false);
       return;
@@ -166,6 +182,7 @@ export default function ProductCard({ data, config, navigation }) {
       for (const elemTag of config) {
         if (tag === elemTag.encoded && elemTag.check) {
           setEdible(false);
+          // nota:
           setAllergensFound(elemTag.name);
         }
       }
@@ -178,6 +195,31 @@ export default function ProductCard({ data, config, navigation }) {
       }
     } else {
       setBackColor('#ac0d0d');
+    }
+  });
+
+  useEffect(() => {
+    if (data === null || data === undefined || data.status === 0) return;
+    checkName();
+    if (data && isValid === true) {
+      const item = {
+        code: data.code,
+        name,
+        image: `${checkImage()}`,
+        edible,
+        scans: data.product.unique_scans_n,
+      };
+
+      getJsonConfig('history').then((value) => {
+        const auxHistory = value;
+        for (const entry in auxHistory) {
+          if (entry && auxHistory[entry].code === item.code) auxHistory.splice(entry, 1);
+        }
+        removeJsonConfig('history');
+        if (auxHistory.length >= 10) auxHistory.pop();
+        auxHistory.unshift(item);
+        setJsonConfig(auxHistory, 'history');
+      }).then(setNewItem(true));
     }
   });
 
@@ -217,10 +259,15 @@ export default function ProductCard({ data, config, navigation }) {
           <Button
             mode="contained"
             color="#80ced7"
-            onPress={() => navigation.pop()}
+            onPress={() => {
+              setScanned(false);
+              setNewItem(false);
+              navigation.pop();
+            }}
             style={styles.buttonCustom}
+            contentStyle={{ height: 50 }}
           >
-            <Text style={styles.buttonText}>Escanear de nuevo</Text>
+            <Text style={styles.buttonText}>Añadir al historial</Text>
           </Button>
         </View>
       ) : (
@@ -232,10 +279,15 @@ export default function ProductCard({ data, config, navigation }) {
           <Button
             mode="contained"
             color="#80ced7"
-            onPress={() => navigation.pop()}
+            onPress={() => {
+              setScanned(false);
+              setNewItem(false);
+              navigation.pop();
+            }}
             style={styles.buttonCustom}
+            contentStyle={{ height: 50 }}
           >
-            <Text style={styles.buttonText}>Escanear de nuevo</Text>
+            <Text style={styles.buttonText}>Volver a escanear</Text>
           </Button>
         </View>
       )}

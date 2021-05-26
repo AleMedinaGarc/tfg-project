@@ -7,7 +7,6 @@ import ProductCard from '../components/ProductCard';
 import useFetch from '../components/CustomHooks';
 
 export default function ProductScreen({ route, navigation }) {
-  // const { offlineData } = useContext(DataContext);
   const { barCode, config } = route.params;
   // const [offline, setOffline] = useState(false);
   const url = `https://world.openfoodfacts.org/api/v0/product/${barCode}.json`;
